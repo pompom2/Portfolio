@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- 빈(객체) 등록 -->
+<!-- 1. 객체 초기화 메소도, 객체 삭제 메소드 -->
+<!-- <bean id="tv" class="polymorphism.SamsungTV" init-method="initMethod" destroy-method="destroyMethod"></bean> -->
+<!-- 2. lazy-init 속성: 즉시 실행되는 것이 아니라 사용되는 시점에 실행되도록 하는 속성 -->
+<!-- <bean id="tv" class="polymorphism.SamsungTV" lazy-init="true"></bean>  -->
+<!-- 3. scope 속성: singleton(기본값, 한번만 호출), prototype(모든 객체를 생성) -->
+<!-- <bean id="tv" class="polymorphism.SamsungTV" scope="singleton"></bean>  -->
+
+
+<!-- 
+< 스프링에서 설정을 하는 방법 >
+1. xml 파일에 설정사항을 적는 방법 
+- xml 파일에 설정 사항을 계속 추가하게 되면 문제점이 발생 -> xml 파일이 커지고, 복잡하게 되어서 유지 보수가 어려워지는 문제에 봉착하게 됨.
+-> 개선책: 소스파일에 설정사항을 적어둠.
+
+2. 애노테이션으로 설정사항을 적는 방법(소스 파일에 설정)
+-->
+
+<!-- ##### 3. xml과 애노테이션을 혼용하는 방법 ##### -->
+<!-- 
+1. xml로 설정하는 경우: 자주 바뀔 가능성이 있는 것, ex) 스피커
+2. 애노테이션으로 설정하는 경우: 자주 바뀔 가능성이 없는 것
+-->
+  <context:component-scan base-package="polymorphism"/>
+ <bean class="polymorphism.AppleSpeaker"></bean> 
+
+
+<!-- ##### 2. 애노테이션으로 설정사항을 적는 방법 ##### -->
+<!--  <context:component-scan base-package="polymorphism"></context:component-scan> -->
+
+<!-- ##### 1. xml 파일에 설정사항을 적는 방법 ##### -->
+<!-- DI(Dependency Injection): 생성자 인젝션, 세터 인젝션 -->
+<!-- 세터 인젝션을 좀더 선호함. -->
+<!-- 1. 생성자 인젝션(Constructor Injection) -->
+ 
+<!-- <bean id="tv" class="polymorphism.SamsungTV">
+	<constructor-arg ref="speaker"></constructor-arg>
+	<constructor-arg value="2000000"></constructor-arg>
+</bean>
+<bean id="speaker" class="polymorphism.SonySpeaker"></bean>
+ -->
+<!-- 2-1. 세터 인젝션(Setter Injection) 1번 -->
+<!-- <bean id="tv" class="polymorphism.SamsungTV">
+	<property name="speaker" ref="sony"></property>
+	<property name="price" value="1500000"></property>
+</bean>
+<bean id="sony" class="polymorphism.SonySpeaker"/>
+
+   -->
+<!-- 2-2. 세터 인젝션(Setter Injection) 2번: p-namespace를 사용 -->
+<!-- 
+<bean id="tv" class="polymorphism.SamsungTV" p:speaker-ref="apple" p:price="2000000"/> 
+<bean id="sony" class="polymorphism.SonySpeaker"/>
+<bean id="apple" class="polymorphism.AppleSpeaker"/>
+-->
+</beans>
+

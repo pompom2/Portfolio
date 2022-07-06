@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0/EN"
+						"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- 1. database properties 파일 설정 -->
+	<!-- <properties resource="config/database.properties"></properties> -->
+	
+	<!-- 2. 객체 alias 설정 -->
+	<typeAliases>
+		<typeAlias alias="board" type="com.springbook.biz.board.BoardDTO"/>
+		<typeAlias alias="member" type="com.springbook.biz.member.MemberDTO"/>
+	</typeAliases>
+	
+	<!-- 3. DataSource 설정: DB 연결 -->
+	<!-- <environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.username}"/>
+				<property name="password" value="${jdbc.password}"/>
+			</dataSource>
+		</environment>
+	</environments> 
+	-->
+	
+	<!-- 4. SQL Mapper 파일 설정 -->
+	<mappers>
+		<mapper resource="mappings/board-mapping.xml"/>
+		<mapper resource="mappings/member-mapping.xml"/>
+	</mappers>
+	
+</configuration>

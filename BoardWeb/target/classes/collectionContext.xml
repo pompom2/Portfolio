@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 1. List
+<bean id="listBean" class="ioc.collection.CollectionBean">
+	<property name="list">
+		<list>
+			<value>이익준</value>
+			<value>김준완</value>
+			<value>채송화</value>
+			<value>안정원</value>
+			<value>양석형</value>
+		</list>
+	</property>
+</bean>
+-->
+
+<!-- 2. Set 
+<bean id="setBean" class="ioc.collection.CollectionBean">
+	<property name="set">
+		<set>
+			<value>이익준</value>
+			<value>김준완</value>
+			<value>채송화</value>
+			<value>안정원</value>
+			<value>양석형</value>
+		</set>
+	</property>
+</bean>
+-->
+
+<!--
+<bean id="mapBean" class="ioc.collection.CollectionBean">
+	<property name="map">
+		<map>
+			<entry>
+				<key><value>이익준</value></key>
+				<value>95</value>
+			</entry>
+			<entry>
+				<key><value>김준완</value></key>
+				<value>88</value>
+			</entry>
+			<entry>
+				<key><value>채송화</value></key>
+				<value>75</value>
+			</entry>
+			<entry>
+				<key><value>안정원</value></key>
+				<value>68</value>
+			</entry>
+			<entry>
+				<key><value>양석형</value></key>
+				<value>77</value>
+			</entry>
+		</map>
+	</property>
+</bean>
+-->
+
+<bean id="propBean" class="ioc.collection.CollectionBean">
+	<property name="prop">
+		<props>
+			<prop key="이익준">간담췌 외과</prop>
+			<prop key="김준완">흉부 외과</prop>
+			<prop key="채송화">신경 외과</prop>
+			<prop key="안정원">소아 외과</prop>
+			<prop key="양석형">산부인과</prop>
+		</props>
+	</property>
+</bean>
+
+
+</beans>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+						"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+						
+<mapper namespace="MemberDAO">
+	<resultMap type="member" id="memberResult">
+		<id property="id" column="id"/>
+		<result property="password" column="password"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="tel" column="tel"/>
+		<result property="address" column="address"/>
+		<result property="regdate" column="regdate"/>
+	</resultMap>
+	
+	<select id="checkIdMember" resultMap="memberResult">
+		<![CDATA[
+		select * from member where id=#{id}
+		]]>
+	</select>
+	
+	<insert id="insertMember">
+		<![CDATA[
+		insert into member (id, password, name, email, tel, address) values(#{id}, #{password}, #{name}, #{email}, #{tel}, #{address})
+		]]>
+	</insert>
+	
+	<update id="updateMember">
+		<![CDATA[
+		update member set password=#{password}, name=#{name}, email=#{email}, tel=#{tel}, address=#{address} where id=#{id}
+		]]>
+	</update>
+	
+	<delete id="deleteMember">
+		<![CDATA[
+		delete member where id=#{id} and password=#{password}
+		]]>
+	</delete>
+	
+	<select id="getMember" resultMap="memberResult">
+		<![CDATA[
+		select * from member where id=#{id}
+		]]>
+	</select>
+	
+	<select id="loginMember" resultMap="memberResult">
+		<![CDATA[
+		select * from member where id=#{id} and password=#{password}
+		]]>
+	</select>
+</mapper>
